@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="saludo">El Chivo</string>
+    <color name="background_color">#AC5C74</color>
+    <color name="text_color">#342A2D</color>
+</resources>
