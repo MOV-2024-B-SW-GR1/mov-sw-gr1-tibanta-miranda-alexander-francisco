@@ -74,6 +74,40 @@ fun main() {
     println(Suma.pi)
     println(Suma.elevarAlCuadrado(2))
     println(Suma.historialSumas)
+
+    // Uso correcto de arreglos y listas dinámicas
+    val arregloEstatico = arrayOf(1, 2, 3)
+    println(arregloEstatico.contentToString()) // Método para imprimir arreglos
+
+    val arregloDinamico = arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    arregloDinamico.add(11)
+    arregloDinamico.add(12)
+    println(arregloDinamico)
+
+    // FOREACH
+    arregloDinamico.forEach { val   orActual -> println(valorActual) }
+    arregloDinamico.forEach { println("Valor actual (it): $it") }
+
+    // MAP
+    val respuestaMap = arregloDinamico.map { it.toDouble() + 100 }
+    println(respuestaMap)
+
+    val respuestaMapDos = arregloDinamico.map { it + 15 }
+    println(respuestaMapDos)
+
+    // FILTER
+    val respuestaFilter = arregloDinamico.filter { it > 5 }
+    val respuestaFilterDos = arregloDinamico.filter { it <= 5 }
+    println(respuestaFilter)
+    println(respuestaFilterDos)
+
+    // ANY (alguno cumple)
+    val respuestaAny = arregloDinamico.any { it > 5 }
+    println(respuestaAny)
+
+    // ALL (todos cumplen)
+    val respuestaAll = arregloDinamico.all { it > 5 }
+    println(respuestaAll)
 }
 
 //-------------FUNCIONES----------
@@ -220,4 +254,5 @@ class Suma(
             historialSumas.add(valorTotalSuma)
         }
     }
+
 }
