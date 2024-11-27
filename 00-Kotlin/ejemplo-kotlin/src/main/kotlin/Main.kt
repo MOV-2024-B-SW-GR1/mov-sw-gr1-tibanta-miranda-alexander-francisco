@@ -136,64 +136,87 @@ abstract class Numeros( //Constructor Primario
     }
 }
 
-//Clase Hijo
-class Suma( //Constructor Primario
+// Clase hija llamada "Suma", que hereda de la clase padre "Numeros".
+class Suma(
+    // Constructor primario: Recibe dos parámetros enteros.
     unoParametro: Int,
     dosParametro: Int,
-): Numeros( //Clase padre, Numeros (extendiendo)     ---> Pasamos los atributos de Suma al padre Números
-    unoParametro,
-    dosParametro
-){
-    //Modificadores de Acceso
-    public val soyPublicoExplicito: String = "Publicas"
-    val soyPublicoImplicito: String = "Publico implicito"
-    init{ //Bloque constructor primario
-        this.numeroUno //Heredamos del Padre
+) : Numeros( // Llamada al constructor de la clase padre "Numeros".
+    unoParametro, // Se pasa el primer parámetro al constructor de "Numeros".
+    dosParametro  // Se pasa el segundo parámetro al constructor de "Numeros".
+) {
+    // --------- Propiedades de la Clase ---------
+    // Modificadores de acceso:
+    public val soyPublicoExplicito: String = "Publicas" // Propiedad explícitamente pública.
+    val soyPublicoImplicito: String = "Publico implicito" // Propiedad implícitamente pública (por defecto en Kotlin).
+
+    // Bloque de inicialización: Se ejecuta al crear una instancia de la clase.
+    init {
+        // Accediendo a las propiedades heredadas de la clase padre "Numeros".
+        this.numeroUno // Uso de `this` para hacer referencia a las propiedades heredadas (opcional).
         this.numeroDos
-        numeroUno //this. OPCIONAL (propiedades, metodos)
-        numeroDos //this. OPCIONAL (propiedades, metodos)
-        this.soyPublicoExplicito
-        soyPublicoImplicito
+        numeroUno // Se puede omitir `this` al referirse a propiedades heredadas o de la clase.
+        numeroDos
+        this.soyPublicoExplicito // Accediendo a una propiedad explícitamente pública.
+        soyPublicoImplicito // Accediendo a una propiedad pública implícita.
     }
-    //-----------Constructores Secundarios
+
+    // --------- Constructores Secundarios ---------
+    // Estos permiten instanciar la clase con diferentes tipos de parámetros.
+
+    // Constructor secundario 1: Recibe un número nullable (puede ser null) y un entero.
     constructor(
-        uno: Int?, //Entero nullable
-        dos: Int,
-    ):this(
-        if(uno == null) 0 else uno,
+        uno: Int?, // Primer parámetro nullable.
+        dos: Int   // Segundo parámetro no nullable.
+    ) : this(
+        if (uno == null) 0 else uno, // Si `uno` es null, se asigna 0. Caso contrario, se usa su valor.
         dos
-    ){
-        //OPCIONAL
-        //Bloque de código de constructor secundario
+    ) {
+        // Este bloque es opcional, se ejecuta al usar este constructor.
     }
+
+    // Constructor secundario 2: Recibe un entero y un número nullable.
     constructor(
-        uno: Int,
-        dos: Int?, //Entero nullable
-    ):this(
+        uno: Int,  // Primer parámetro no nullable.
+        dos: Int?  // Segundo parámetro nullable.
+    ) : this(
         uno,
-        if(dos==null) 0 else dos,
+        if (dos == null) 0 else dos // Si `dos` es null, se asigna 0.
     )
+
+    // Constructor secundario 3: Ambos parámetros son nullable.
     constructor(
-        uno: Int?,//Entero nullable
-        dos: Int?,//Entero nullable
-    ):this(
-        if(uno==null) 0 else uno,
-        if(dos==null) 0 else dos
+        uno: Int?, // Primer parámetro nullable.
+        dos: Int?  // Segundo parámetro nullable.
+    ) : this(
+        if (uno == null) 0 else uno, // Si `uno` es null, se asigna 0.
+        if (dos == null) 0 else dos // Si `dos` es null, se asigna 0.
     )
-    fun sumar():Int{
-        val total = numeroUno + numeroDos
-        agregarHistorial(total)
-        return total
+
+    // --------- Métodos ---------
+    // Método que suma las propiedades heredadas `numeroUno` y `numeroDos`.
+    fun sumar(): Int {
+        val total = numeroUno + numeroDos // Realiza la suma.
+        agregarHistorial(total) // Guarda el resultado en el historial.
+        return total // Devuelve el resultado.
     }
-    companion object{ //Comparte entre todas las instancias, similar al STATIC
-        //funciones, variables
-        //NombreClase.metodo, NombreClase.funcion =>
-        //Suma.pi
-        val pi = 3.14
-        //Suma.elevarAlCuadrado
-        fun elevarAlCuadrado(num:Int):Int{ return num*num}
+
+    // Companion Object: Se comparte entre todas las instancias de la clase.
+    companion object {
+        // Propiedades y métodos estáticos equivalentes a "static" en Java.
+
+        val pi = 3.14 // Constante compartida entre instancias.
+
+        // Método para elevar un número al cuadrado.
+        fun elevarAlCuadrado(num: Int): Int {
+            return num * num
+        }
+
+        // Historial compartido para registrar los resultados de las sumas.
         val historialSumas = arrayListOf<Int>()
-        fun agregarHistorial(valorTotalSuma:Int){
+
+        // Método para agregar un resultado al historial.
+        fun agregarHistorial(valorTotalSuma: Int) {
             historialSumas.add(valorTotalSuma)
         }
     }
