@@ -85,7 +85,7 @@ fun main() {
     println(arregloDinamico)
 
     // FOREACH
-    arregloDinamico.forEach { val   orActual -> println(valorActual) }
+    arregloDinamico.forEach { valorActual -> println(valorActual) }
     arregloDinamico.forEach { println("Valor actual (it): $it") }
 
     // MAP
