@@ -65,4 +65,20 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/btn_ir_intent_explicito" />
 
+    <Button
+        android:id="@+id/btn_recycler_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R.View"
+        tools:layout_editor_absoluteX="143dp"
+        tools:layout_editor_absoluteY="122dp" />
+
+    <Button
+        android:id="@+id/btn_sqlite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SQlite"
+        tools:layout_editor_absoluteX="142dp"
+        tools:layout_editor_absoluteY="204dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

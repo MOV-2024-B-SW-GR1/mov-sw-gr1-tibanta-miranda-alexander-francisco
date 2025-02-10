@@ -86,6 +86,18 @@ class MainActivity : AppCompatActivity() {
                 BEntrenador(1, "Alexander", "Tibanta"))
             callbackContenidoIntentExplicito.launch(intentExplicito)
         }
+
+        val botonIrSqlite = findViewById<Button>(R.id.btn_sqlite)
+        botonIrSqlite
+            .setOnClickListener {
+                irActividad(ECrudEntrenador::class.java)
+            }
+
+        val botonRecylerView = findViewById<Button>(R.id.btn_recycler_view)
+        botonRecylerView
+            .setOnClickListener {
+                irActividad(FRecyclerView::class.java)
+            }
     }
 
     private fun irActividad(clase: Class<*>) {
