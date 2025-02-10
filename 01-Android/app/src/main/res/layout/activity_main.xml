@@ -81,4 +81,12 @@
         tools:layout_editor_absoluteX="142dp"
         tools:layout_editor_absoluteY="204dp" />
 
+    <Button
+        android:id="@+id/btn_google_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="G.Mpas"
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="382dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

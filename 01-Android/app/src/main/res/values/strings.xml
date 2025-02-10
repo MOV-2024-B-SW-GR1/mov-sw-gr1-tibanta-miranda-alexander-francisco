@@ -1,1 +1,4 @@
-<resources></resources>
+<resources>
+    <string name="title_activity_ggoogle_maps_placeholder">GGoogleMapsPlaceholder</string>
+    <string name="app_name" />
+</resources>
