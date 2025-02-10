@@ -89,4 +89,12 @@
         tools:layout_editor_absoluteX="133dp"
         tools:layout_editor_absoluteY="382dp" />
 
+    <Button
+        android:id="@+id/btn_intent_firebase_ui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Auth"
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="460dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
