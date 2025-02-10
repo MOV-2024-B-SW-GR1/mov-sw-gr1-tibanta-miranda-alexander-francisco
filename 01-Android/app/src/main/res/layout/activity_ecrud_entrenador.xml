@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ECrudEntrenador">
+
+    <Button
+        android:id="@+id/btn_buscar_bdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buscar"
+        app:layout_constraintEnd_toStartOf="@+id/btn_crear_bdd"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="433dp" />
+
+    <Button
+        android:id="@+id/btn_crear_bdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="433dp" />
+
+    <Button
+        android:id="@+id/btn_actualizar_bdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Actualizar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toEndOf="@+id/btn_crear_bdd"
+        tools:layout_editor_absoluteY="433dp" />
+
+    <Button
+        android:id="@+id/btn_eliminar_bdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Eliminar"
+        app:layout_constraintTop_toBottomOf="@+id/btn_crear_bdd"
+        tools:layout_editor_absoluteX="155dp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/input_id"
+        android:layout_width="347dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="68dp"
+        android:hint="Ingrese id"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="32dp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/input_nombre"
+        android:layout_width="347dp"
+        android:layout_height="44dp"
+        android:hint="Ingrese nombre"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="140dp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/input_descripcion"
+        android:layout_width="347dp"
+        android:layout_height="44dp"
+        android:hint="Ingrese Descripcion"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="220dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
