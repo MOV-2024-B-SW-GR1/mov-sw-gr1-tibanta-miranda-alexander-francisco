@@ -14,6 +14,8 @@ class EmpresaDAO(context: Context) {
             put(DatabaseHelper.COLUMN_EMPRESA_NOMBRE, empresa.nombre)
             put(DatabaseHelper.COLUMN_EMPRESA_CANTIDAD, empresa.cantidadEmpleados)
             put(DatabaseHelper.COLUMN_EMPRESA_DIRECCION, empresa.direccion)
+            put(DatabaseHelper.COLUMN_EMPRESA_LATITUD, empresa.latitud)
+            put(DatabaseHelper.COLUMN_EMPRESA_LONGITUD, empresa.longitud)
         }
         val id = db.insert(DatabaseHelper.TABLE_EMPRESA, null, values)
         db.close()
@@ -31,7 +33,9 @@ class EmpresaDAO(context: Context) {
                 nombre = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_EMPRESA_NOMBRE)),
                 cantidadEmpleados = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_EMPRESA_CANTIDAD))
                     .toString(),
-                direccion = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_EMPRESA_DIRECCION))
+                direccion = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_EMPRESA_DIRECCION)),
+                latitud = cursor.getDouble(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_EMPRESA_LATITUD)),
+                longitud = cursor.getDouble(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_EMPRESA_LONGITUD))
             )
             empresas.add(empresa)
         }
@@ -57,7 +61,9 @@ class EmpresaDAO(context: Context) {
                 nombre = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_EMPRESA_NOMBRE)),
                 cantidadEmpleados = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_EMPRESA_CANTIDAD))
                     .toString(),
-                direccion = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_EMPRESA_DIRECCION))
+                direccion = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_EMPRESA_DIRECCION)),
+                latitud = cursor.getDouble(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_EMPRESA_LATITUD)),
+                longitud = cursor.getDouble(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_EMPRESA_LONGITUD))
             )
         } else {
             null
@@ -73,6 +79,8 @@ class EmpresaDAO(context: Context) {
             put(DatabaseHelper.COLUMN_EMPRESA_NOMBRE, empresa.nombre)
             put(DatabaseHelper.COLUMN_EMPRESA_CANTIDAD, empresa.cantidadEmpleados)
             put(DatabaseHelper.COLUMN_EMPRESA_DIRECCION, empresa.direccion)
+            put(DatabaseHelper.COLUMN_EMPRESA_LATITUD, empresa.latitud)
+            put(DatabaseHelper.COLUMN_EMPRESA_LONGITUD, empresa.longitud)
         }
         val result = db.update(DatabaseHelper.TABLE_EMPRESA, values, "${DatabaseHelper.COLUMN_EMPRESA_ID}=?", arrayOf(id.toString()))
         db.close()

@@ -4,5 +4,7 @@ data class Empresa(
     val id: String = 0.toString(), // ID autoincremental en la base de datos
     val nombre: String,
     val cantidadEmpleados: String,
-    val direccion: String
+    val direccion: String,
+    val latitud: Double,
+    val longitud: Double
 )

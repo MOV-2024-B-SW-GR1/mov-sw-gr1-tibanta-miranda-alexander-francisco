@@ -26,6 +26,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         const val COLUMN_EMPRESA_NOMBRE = "nombre"
         const val COLUMN_EMPRESA_CANTIDAD = "cantidadEmpleados"
         const val COLUMN_EMPRESA_DIRECCION = "direccion"
+        const val COLUMN_EMPRESA_LATITUD = "latitud"
+        const val COLUMN_EMPRESA_LONGITUD = "longitud"
 
         const val TABLE_EMPLEADO = "empleado"
         const val COLUMN_EMPLEADO_ID = "id"
@@ -41,7 +43,9 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 $COLUMN_EMPRESA_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                 $COLUMN_EMPRESA_NOMBRE TEXT NOT NULL,
                 $COLUMN_EMPRESA_CANTIDAD INTEGER NOT NULL,
-                $COLUMN_EMPRESA_DIRECCION TEXT NOT NULL
+                $COLUMN_EMPRESA_DIRECCION TEXT NOT NULL,
+                $COLUMN_EMPRESA_LATITUD TEXT NOT NULL,
+                $COLUMN_EMPRESA_LONGITUD TEXT NOT NULL
             )
         """
 
