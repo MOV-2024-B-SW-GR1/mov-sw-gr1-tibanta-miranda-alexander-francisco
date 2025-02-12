@@ -8,9 +8,6 @@ interface DoctorDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertarDoctor(doctor: Doctor)
 
-    @Query("SELECT * FROM doctores WHERE especialidad = :especialidad")
-    suspend fun obtenerDoctoresPorEspecialidad(especialidad: String): List<Doctor>
-
     @Query("SELECT * FROM doctores WHERE cedula = :cedula LIMIT 1")
     suspend fun obtenerDoctorPorCedula(cedula: String): Doctor?
 

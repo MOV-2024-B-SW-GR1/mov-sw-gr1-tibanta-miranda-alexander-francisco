@@ -5,49 +5,50 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".ui.PacienteHomeActivity">
 
     <TextView
         android:id="@+id/txtBienvenidaPaciente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:text="Bienvenido Paciente"
+        android:textColor="@color/white"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="40dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnAgendarCita"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/PrimaryButton"
+        android:layout_marginTop="28dp"
         android:text="Agendar Cita"
-        app:layout_constraintTop_toBottomOf="@id/txtBienvenidaPaciente"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtBienvenidaPaciente" />
 
     <Button
         android:id="@+id/btnCerrarSesionPaciente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/SecondaryButton"
         android:text="Cerrar Sesión"
-        app:layout_constraintTop_toBottomOf="@id/btnAgendarCita"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnAgendarCita" />
 
     <ListView
         android:id="@+id/lvCitasAgendadas"
-        android:layout_width="351dp"
-        android:layout_height="470dp"
+        android:layout_width="333dp"
+        android:layout_height="451dp"
+        android:background="@color/fondo_principal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.938" />
-
+        app:layout_constraintTop_toBottomOf="@id/btnCerrarSesionPaciente"
+        app:layout_constraintVertical_bias="0.609" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

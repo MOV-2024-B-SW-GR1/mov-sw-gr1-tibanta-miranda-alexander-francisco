@@ -2,7 +2,6 @@ package com.example.proyecto02.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
@@ -12,13 +11,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.proyecto02.R
 import com.example.proyecto02.database.AppDatabase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DoctorHomeActivity : AppCompatActivity() {
 
-    private lateinit var lvCitasAgendadas: ListView
+    private lateinit var lvCitasDoctor: ListView
     private lateinit var database: AppDatabase
-    private lateinit var btnCerrarSesion: Button
     private var doctorId: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,53 +26,49 @@ class DoctorHomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_doctor_home)
 
         val txtBienvenida = findViewById<TextView>(R.id.txtBienvenidaDoctor)
-        lvCitasAgendadas = findViewById(R.id.lvCitasAgendadas)
-        btnCerrarSesion = findViewById(R.id.btnCerrarSesionDoctor)
-
+        val btnCerrarSesion = findViewById<Button>(R.id.btnCerrarSesionDoctor)
+        lvCitasDoctor = findViewById(R.id.lvCitasAgendadas)
         database = AppDatabase.getDatabase(this)
 
-        doctorId = intent.getStringExtra("doctorId") ?: ""  // Se obtiene el doctorId
+        // Obtener doctorId desde el intent
+        doctorId = intent.getStringExtra("doctorId") ?: ""
 
-        // Obtener el nombre del doctor y usar un valor por defecto si es null
-        val nombreDoctor = intent.getStringExtra("nombreDoctor") ?: "Doctor"
-        txtBienvenida.text = "Bienvenido, $nombreDoctor"
-
-        // Llamar a la función para cargar las citas automáticamente al iniciar la actividad
+        // Cargar citas del doctor
         cargarCitas()
 
-        // Configurar el botón de cerrar sesión
+        // Obtener el nombre del doctor desde el intent
+        val nombreDoctor = intent.getStringExtra("nombreDoctor") ?: "Doctor"
+        txtBienvenida.text = "Bienvenido, Dr. $nombreDoctor"
+
         btnCerrarSesion.setOnClickListener {
-            cerrarSesion()
+            finish()
         }
     }
 
     private fun cargarCitas() {
-        lifecycleScope.launch {
+        lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val citasConDoctor = database.citaDAO().obtenerCitasPorDoctor(doctorId)
-                Log.d("DoctorHome", "Citas encontradas: ${citasConDoctor.size}")
+                val citas = database.citaDAO().obtenerCitasPorDoctor(doctorId)
 
-                if (citasConDoctor.isEmpty()) {
-                    Toast.makeText(this@DoctorHomeActivity, "No tienes citas agendadas", Toast.LENGTH_SHORT).show()
-                    return@launch
+                // Volver al hilo principal para actualizar la UI
+                withContext(Dispatchers.Main) {
+                    if (citas.isEmpty()) {
+                        Toast.makeText(this@DoctorHomeActivity, "No tienes citas agendadas", Toast.LENGTH_SHORT).show()
+                        return@withContext
+                    }
+
+                    val citasInfo = citas.map {
+                        "Fecha: ${it.fecha}, Hora: ${it.hora}, Paciente: ${it.paciente_id}"
+                    }
+
+                    val adapter = ArrayAdapter(this@DoctorHomeActivity, android.R.layout.simple_list_item_1, citasInfo)
+                    lvCitasDoctor.adapter = adapter
                 }
-
-                val citasInfo = citasConDoctor.map { cita ->
-                    "Fecha: ${cita.fecha}, Hora: ${cita.hora}, Paciente: ${cita.paciente_id}, Doctor: ${cita.nombreDoctor} ${cita.apellidoDoctor}"
-                }
-
-                val adapter = ArrayAdapter(this@DoctorHomeActivity, android.R.layout.simple_list_item_1, citasInfo)
-                lvCitasAgendadas.adapter = adapter
             } catch (e: Exception) {
-                Toast.makeText(this@DoctorHomeActivity, "Error al cargar citas: ${e.message}", Toast.LENGTH_LONG).show()
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@DoctorHomeActivity, "Error al cargar citas: ${e.message}", Toast.LENGTH_LONG).show()
+                }
             }
         }
-    }
-
-    private fun cerrarSesion() {
-        // Aquí puedes borrar los datos de sesión (si es necesario) y redirigir al usuario
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-        finish()  // Esto asegura que la actividad actual (DoctorHomeActivity) se cierre
     }
 }

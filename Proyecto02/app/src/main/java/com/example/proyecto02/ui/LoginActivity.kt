@@ -21,23 +21,23 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        // Inicializar la base de datos
         database = AppDatabase.getDatabase(this)
 
+        // Vincular vistas
         editCedula = findViewById(R.id.editCedula)
-        btnLogin = findViewById(R.id.btnLogin)
+        btnLogin = findViewById(R.id.btnIniciar)
         btnRegistro = findViewById(R.id.btnRegistro)
 
-        btnLogin.setOnClickListener {
-            validarUsuario()
-        }
-
+        // Eventos de los botones
+        btnLogin.setOnClickListener { validarUsuario() }
         btnRegistro.setOnClickListener {
             startActivity(Intent(this, RegistroActivity::class.java))
         }
     }
 
     private fun validarUsuario() {
-        val cedula = editCedula.text.toString()
+        val cedula = editCedula.text.toString().trim()
 
         if (cedula.isEmpty()) {
             Toast.makeText(this, "Ingrese su cédula", Toast.LENGTH_SHORT).show()
@@ -48,15 +48,23 @@ class LoginActivity : AppCompatActivity() {
             val doctor = database.doctorDAO().obtenerDoctorPorCedula(cedula)
             val paciente = database.pacienteDAO().obtenerPacientePorCedula(cedula)
 
-            runOnUiThread {
+            launch(Dispatchers.Main) {
                 when {
                     doctor != null -> {
                         Toast.makeText(applicationContext, "Bienvenido Doctor ${doctor.nombre}", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@LoginActivity, DoctorHomeActivity::class.java))
+                        val intent = Intent(this@LoginActivity, DoctorHomeActivity::class.java).apply {
+                            putExtra("doctorId", doctor.cedula)
+                            putExtra("nombreDoctor", doctor.nombre)
+                        }
+                        startActivity(intent)
                     }
                     paciente != null -> {
                         Toast.makeText(applicationContext, "Bienvenido ${paciente.nombre}", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@LoginActivity, PacienteHomeActivity::class.java))
+                        val intent = Intent(this@LoginActivity, PacienteHomeActivity::class.java).apply {
+                            putExtra("pacienteId", paciente.cedula)
+                            putExtra("nombrePaciente", paciente.nombre)
+                        }
+                        startActivity(intent)
                     }
                     else -> {
                         Toast.makeText(applicationContext, "Cédula no registrada", Toast.LENGTH_SHORT).show()

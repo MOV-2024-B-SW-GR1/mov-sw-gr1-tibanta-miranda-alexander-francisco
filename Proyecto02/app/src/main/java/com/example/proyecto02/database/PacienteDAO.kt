@@ -11,9 +11,6 @@ interface PacienteDAO {
     @Query("SELECT * FROM pacientes WHERE cedula = :cedula LIMIT 1")
     suspend fun obtenerPacientePorCedula(cedula: String): Paciente?
 
-    @Query("SELECT * FROM pacientes")
-    suspend fun obtenerTodosLosPacientes(): List<Paciente>
-
     @Update
     suspend fun actualizarPaciente(paciente: Paciente)
 

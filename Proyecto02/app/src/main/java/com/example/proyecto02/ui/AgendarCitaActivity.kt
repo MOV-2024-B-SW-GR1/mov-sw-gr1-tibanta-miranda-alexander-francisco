@@ -98,11 +98,13 @@ class AgendarCitaActivity : AppCompatActivity() {
                 val doctorId = doctor.cedula ?: ""
                 val nuevaCita = Cita(fecha = fecha, hora = hora, paciente_id = pacienteId, doctor_id = doctorId)
                 database.citaDAO().insertarCita(nuevaCita)
-                Log.d("AgendarCita", "Cita agendada: ${nuevaCita.id}")
                 Toast.makeText(this@AgendarCitaActivity, "Cita agendada", Toast.LENGTH_SHORT).show()
 
                 // Regresar a PacienteHomeActivity después de agendar la cita
-                val intent = Intent(this@AgendarCitaActivity, PacienteHomeActivity::class.java)
+                val intent = Intent(this@AgendarCitaActivity, PacienteHomeActivity::class.java).apply {
+                    putExtra("pacienteId", pacienteId)
+                    putExtra("nombrePaciente", intent.getStringExtra("nombrePaciente")) // Mantener nombre del paciente
+                }
                 startActivity(intent)
                 finish()
             } catch (e: Exception) {
@@ -124,6 +126,13 @@ class AgendarCitaActivity : AppCompatActivity() {
             try {
                 database.citaDAO().eliminarCita(pacienteId, fecha, hora)
                 Toast.makeText(this@AgendarCitaActivity, "Cita eliminada", Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(this@AgendarCitaActivity, PacienteHomeActivity::class.java).apply {
+                    putExtra("pacienteId", pacienteId)
+                    putExtra("nombrePaciente", intent.getStringExtra("nombrePaciente")) // Mantener nombre del paciente
+                }
+                startActivity(intent)
+                finish()
             } catch (e: Exception) {
                 Toast.makeText(this@AgendarCitaActivity, "Error al eliminar cita: ${e.message}", Toast.LENGTH_LONG).show()
             }

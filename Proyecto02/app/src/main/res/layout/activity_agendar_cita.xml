@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".ui.AgendarCitaActivity">
 
     <TextView
@@ -14,6 +15,7 @@
         android:text="Agendar Cita"
         android:textSize="22sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,47 +23,57 @@
 
     <EditText
         android:id="@+id/edtFecha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/CustomEditText"
+        android:layout_width="332dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="44dp"
         android:hint="Fecha (YYYY-MM-DD)"
-        app:layout_constraintTop_toBottomOf="@id/txtTitulo"
-        android:layout_marginTop="16dp"/>
-
-    <EditText
-        android:id="@+id/edtHora"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
-        android:hint="Hora (HH:MM)"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/txtTitulo" />
 
     <Spinner
         android:id="@+id/spinnerDoctores"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/edtHora"
-        android:layout_marginTop="16dp"/>
+        android:layout_width="299dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="64dp"
+        android:background="@color/white"
+        android:popupBackground="#000000"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtHora" />
+
+    <EditText
+        android:id="@+id/edtHora"
+        style="@style/CustomEditText"
+        android:layout_width="331dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="20dp"
+        android:hint="Hora (HH:MM)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtFecha" />
 
     <Button
         android:id="@+id/btnAgendar"
-        android:layout_width="275dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="92dp"
+        style="@style/PrimaryButton"
+        android:layout_marginTop="68dp"
         android:text="Agendar Cita"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spinnerDoctores" />
 
     <Button
         android:id="@+id/btnEliminarCita"
-        android:layout_width="279dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="16dp"
+        style="@style/PrimaryButton"
         android:text="Eliminar Cita"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnAgendar"
-        tools:layout_editor_absoluteX="68dp" />
+        app:layout_constraintVertical_bias="0.062" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".ui.RegistroActivity">
 
     <TextView
@@ -14,6 +15,7 @@
         android:text="Registro de Usuario"
         android:textSize="22sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/editCedula"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,116 +24,115 @@
 
     <EditText
         android:id="@+id/editCedula"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        style="@style/CustomEditText"
+        android:layout_width="320dp"
+        android:layout_height="51dp"
         android:hint="Cédula"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtTitulo" />
 
     <EditText
-        android:id="@+id/editEdad"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:hint="Edad"
-        android:inputType="number"
+        android:id="@+id/editNombre"
+        style="@style/CustomEditText"
+        android:layout_width="320dp"
+        android:layout_height="47dp"
+        android:hint="Nombre"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editApellido" />
+        app:layout_constraintTop_toBottomOf="@id/editCedula" />
 
     <EditText
         android:id="@+id/editApellido"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        style="@style/CustomEditText"
+        android:layout_width="324dp"
+        android:layout_height="42dp"
         android:hint="Apellido"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editNombre" />
 
     <EditText
-        android:id="@+id/editNombre"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:hint="Nombre"
+        android:id="@+id/editEdad"
+        style="@style/CustomEditText"
+        android:layout_width="323dp"
+        android:layout_height="45dp"
+        android:hint="Edad"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editCedula" />
+        app:layout_constraintTop_toBottomOf="@id/editApellido" />
 
     <Spinner
         android:id="@+id/spinnerTipo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_width="292dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/white"
         android:entries="@array/tipo_usuario"
+        android:popupBackground="#000000"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editEdad" />
 
     <EditText
         android:id="@+id/editPeso"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        style="@style/CustomEditText"
+        android:layout_width="318dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="36dp"
         android:hint="Peso (kg)"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spinnerTipo" />
 
     <EditText
         android:id="@+id/editAltura"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        style="@style/CustomEditText"
+        android:layout_width="319dp"
+        android:layout_height="49dp"
         android:hint="Altura (m)"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editPeso" />
 
     <EditText
         android:id="@+id/editDepartamento"
+        style="@style/CustomEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Departamento"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinnerTipo"
-        android:layout_marginTop="8dp"/>
+        app:layout_constraintTop_toBottomOf="@id/spinnerTipo" />
 
     <EditText
         android:id="@+id/editEspecialidad"
+        style="@style/CustomEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
         android:hint="Especialidad"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editDepartamento" />
 
     <Button
         android:id="@+id/btnRegistrar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
+        style="@style/PrimaryButton"
+        android:layout_marginTop="56dp"
         android:text="Registrar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.554"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editEspecialidad" />
+        app:layout_constraintTop_toBottomOf="@id/editAltura"
+        app:layout_constraintVertical_bias="0.157" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

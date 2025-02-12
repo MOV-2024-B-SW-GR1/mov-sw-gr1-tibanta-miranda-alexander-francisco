@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".ui.DoctorHomeActivity">
 
     <TextView
@@ -14,6 +15,7 @@
         android:text="Bienvenido Doctor"
         android:textSize="22sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,8 +23,7 @@
 
     <Button
         android:id="@+id/btnVerCitas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/PrimaryButton"
         android:text="Ver Citas"
         app:layout_constraintTop_toBottomOf="@id/txtBienvenidaDoctor"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,8 +32,7 @@
 
     <Button
         android:id="@+id/btnCerrarSesionDoctor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/SecondaryButton"
         android:text="Cerrar Sesión"
         app:layout_constraintTop_toBottomOf="@id/btnVerCitas"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,13 +41,13 @@
 
     <ListView
         android:id="@+id/lvCitasAgendadas"
-        android:layout_width="318dp"
-        android:layout_height="444dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/fondo_principal"
+        app:layout_constraintTop_toBottomOf="@id/btnCerrarSesionDoctor"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.818" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="16dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
